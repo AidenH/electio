@@ -10,7 +10,7 @@ contract ElectionCaller {
 
     // Only charge to create election
     modifier initPrice {
-        require(msg.value >= 1, "Not enough Eth available to call vote.");
+        require(msg.value == 0, "Not enough Eth available to call vote.");
         _;
     }
 
