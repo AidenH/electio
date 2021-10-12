@@ -8,12 +8,14 @@ contract ElectionCaller {
     address private elecAddr;
     address private owner;
 
+    // Only charge to create election
     modifier initPrice {
-        require(msg.value >= 2, "Not enough Eth available to call vote.");
+        require(msg.value >= 1, "Not enough Eth available to call vote.");
         _;
     }
 
     constructor() {
+        // Ideally add owner-only admin function of deleting elections
         owner = msg.sender;
     }
 
@@ -24,8 +26,9 @@ contract ElectionCaller {
         return elecAddr;
     }
 
-    function callVote() public returns (string memory) {
-        // string memory result = Election(elecAddr).placeVote(msg.sender, );
-        // return result;
-    }
+    // -For later use-
+    // To call Election instance function:
+    // Election(elecAddr).placeVote(msg.sender, );
+    // Election(<address of>).function(<parameters>)
+
 }
