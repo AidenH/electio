@@ -1,10 +1,11 @@
-const Caller = artifacts.require("Caller")
+const ElectionCaller = artifacts.require("ElectionCaller")
+const Election = artifacts.require("Election")
 
-contract("Caller", () => {
+contract("ElectionCaller", () => {
     // createElection()
     it("caller should return address", async() => {
-        const inst = await Caller.deployed()
-        const result = await inst.createElection()
+        const inst = await ElectionCaller.deployed()
+        const result = await inst.createElection.call()
 
         console.log("LOG:", result)
         //assert.equal(a, 4)

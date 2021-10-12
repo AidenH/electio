@@ -1,7 +1,7 @@
 //const Election = artifacts.require("Election")
-const Caller = artifacts.require("Caller")
+const ElectionCaller = artifacts.require("ElectionCaller")
 
 module.exports = (deployer) => {
     //deployer.deploy(Election)
-    deployer.deploy(Caller)
+    deployer.deploy(ElectionCaller)
 }
