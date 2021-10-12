@@ -1,33 +1,6 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.9;
 
-contract ElectionCaller {
-    address[] electionList;
-    address private elecAddr;
-    address private owner;
-
-    modifier initPrice {
-        require(msg.value >= 2, "Not enough Eth available to call vote.");
-        _;
-    }
-
-    constructor() {
-        owner = msg.sender;
-    }
-
-    function createElection() public payable initPrice returns (address) {
-        elecAddr = address(new Election(msg.sender));
-        electionList.push(elecAddr);
-
-        return elecAddr;
-    }
-
-    function callVote() public returns (string memory) {
-        // string memory result = Election(elecAddr).placeVote(msg.sender, );
-        // return result;
-    }
-}
-
 contract Election {
     mapping(address => uint256) private candidateList;
     address[] voterList;
@@ -41,20 +14,40 @@ contract Election {
         _;
     }
 
+    modifier regPeriod {
+        require(block.timestamp < block.timestamp + registrationTime,
+            "Registration period has ended.");
+        _;
+    }
+
+    // Adds caller to candidate list, marks election creation time
     constructor(address _callerAddr) {
         candidateList[_callerAddr] = 0;
         elecStart = block.timestamp;
     }
 
+    // Add candidate to candidateList
+    function addCandidate(address _candidate) public regPeriod {
+        candidateList[_candidate] = 0;
+    }
+
+    // Places vote if between registration end and voting end.
+    // Else, call tallyVote()
     function placeVote(address _callerAddr, address _candidate) public votingPeriod returns (string memory) {
         if (block.timestamp < (block.timestamp + registrationTime) + votingTime) {
             voterList.push(_callerAddr);
             candidateList[_candidate] += 1;
 
-            return "vote placed!";
+            return "Vote placed!";
         }
         else {
-            
+            tallyVote();
+
+            return "Voting has ended.";
         }
+    }
+
+    function tallyVote() public {
+        // ...
     }
 }
