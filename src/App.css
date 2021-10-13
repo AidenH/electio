@@ -17,17 +17,17 @@ html, body, #root {
 }
 
 #main {
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-top: 1%;
+    padding-block: 1%;
+    padding-inline: 20%;
 }
 
 #app-body {
     height: 80%;
     width: 100%;
     padding-block: 10px;
+    padding-inline: 10px;
+    margin-bottom: 20px;
 
-    border: 1px solid #aaa;
     background-color: rgb(63, 77, 77);
 }
 
