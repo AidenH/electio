@@ -1,7 +1,17 @@
-body {
+html, body, #root {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
     background-color: rgb(29, 29, 29);
+    background-image: linear-gradient(rgb(29, 29, 29), rgb(34, 46, 48), rgb(72, 93, 105));
+    background-repeat: no-repeat;
 }
 
 #main {
-    color: rgb(235, 235, 235);
+    padding-left: 20%;
+    padding-top: 3%;
 }

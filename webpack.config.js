@@ -25,7 +25,7 @@ module.exports = {
     filename: "bundle.js"
   },
   devServer: {
-    static: path.join(__dirname, "public/"),
+    static: path.join(__dirname, "src/components/"),
     port: 3000,
     allowedHosts: 'auto'
   },
