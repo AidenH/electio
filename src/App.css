@@ -1,3 +1,8 @@
+h1 {
+    font-weight: 700;
+    font-size: 50px;
+}
+
 html, body, #root {
     margin: 0;
     width: 100%;
@@ -13,5 +18,34 @@ html, body, #root {
 
 #main {
     padding-left: 20%;
-    padding-top: 3%;
+    padding-right: 20%;
+    padding-top: 1%;
+}
+
+#app-body {
+    height: 80%;
+    width: 100%;
+    padding-block: 10px;
+
+    border: 1px solid #aaa;
+    background-color: rgb(63, 77, 77);
+}
+
+.app-button {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    background-color: rgb(153, 104, 123);
+
+    cursor: pointer;
+}
+
+.app-button:hover {
+    background-color: rgb(128, 87, 102);
 }

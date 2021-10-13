@@ -4,7 +4,7 @@ import { hot } from "react-hot-loader"
 class Footer extends Component {
     render() {
         return (
-            <div>
+            <div id="app-footer">
                 Footer
             </div>
         )
