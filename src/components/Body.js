@@ -1,8 +1,12 @@
 import React, { Component } from "react"
-import { hot } from "react-hot-loader"
+import { AppContainer, hot } from "react-hot-loader"
 import Web3 from "web3"
 
 const web3 = new Web3.providers.WebsocketProvider("ws:localhost:3000")
+
+if (ethereum.isMetaMask === true) {
+    console.log("MetaMask installed!")
+}
 
 const addrDiv = document.getElementById("return-election-address")
 
@@ -10,7 +14,7 @@ class Body extends Component {
     constructor() {
         super()
         this.state = {
-            addr: "AAAAAA",
+            addr: "empty",
             addrVisible: false
         }
     }
@@ -32,9 +36,11 @@ class Body extends Component {
         )
     }
 
-    addrUpdate() {
+    async addrUpdate() {
+        const callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
+
         this.setState({
-            addr: "BBBBB",
+            addr: callerAddr,
             addrVisible: true
         })
     }
