@@ -1,14 +1,12 @@
 import React, { Component } from "react"
-import { AppContainer, hot } from "react-hot-loader"
+import { hot } from "react-hot-loader"
 import Web3 from "web3"
 
 const web3 = new Web3.providers.WebsocketProvider("ws:localhost:3000")
 
 if (ethereum.isMetaMask === true) {
-    console.log("MetaMask installed!")
+    console.log("MetaMask Present!")
 }
-
-const addrDiv = document.getElementById("return-election-address")
 
 class Body extends Component {
     constructor() {
