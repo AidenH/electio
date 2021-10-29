@@ -55,7 +55,8 @@ class Body extends Component {
 
     // Deploy Election instance
     async deployElectionInst() {
-        // Empty
+        let electionInst = await ElectionCaller.methods.createElection().call()
+        console.log(electionInst)
     }
 }
 
