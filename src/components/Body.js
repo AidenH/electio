@@ -25,7 +25,9 @@ class Body extends Component {
                     this.addrUpdate()
                     }}>Get Address</div>
 
-                    <div className="app-button">Deploy</div>
+                    <div className="app-button" onClick={() => {
+                        this.deployElectionInst()
+                    }}>Deploy</div>
                 </div>
 
                 {this.state.addrVisible &&
