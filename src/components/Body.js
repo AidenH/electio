@@ -1,11 +1,14 @@
 import React, { Component } from "react"
 import { AppContainer, hot } from "react-hot-loader"
 import Web3 from "web3"
+import ElectionCallerAbi from '../../build/contracts/ElectionCaller.json'
 
-const web3 = new Web3.providers.WebsocketProvider("ws:localhost:3000")
+// Instantiate web3 and deployed ElectionCaller contract
+const web3 = new Web3('ws://127.0.0.1:8545')
+const ElectionCaller = new web3.eth.Contract(ElectionCallerAbi.abi, "0xa45fa685e8017302a963dfc7aacd63bc96c48df0")
 
 if (ethereum.isMetaMask === true) {
-    console.log("MetaMask Present!")
+    console.log("MetaMask is present!")
 }
 
 class Body extends Component {
@@ -40,6 +43,7 @@ class Body extends Component {
         )
     }
 
+    // [Temp.] Get sender address
     async addrUpdate() {
         const callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
 
