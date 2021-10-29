@@ -24,8 +24,8 @@ class Body extends Component {
         return (
             <div id="app-body">
                 <div id="button-box">
-                <div className="app-button" onClick={() => {
-                    this.addrUpdate()
+                    <div className="app-button" onClick={() => {
+                        this.addrUpdate()
                     }}>Get Address</div>
 
                     <div className="app-button" onClick={() => {
@@ -51,6 +51,11 @@ class Body extends Component {
             addr: callerAddr,
             addrVisible: true
         })
+    }
+
+    // Deploy Election instance
+    async deployElectionInst() {
+        // Empty
     }
 }
 
