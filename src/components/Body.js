@@ -20,13 +20,17 @@ class Body extends Component {
     render() {
         return (
             <div id="app-body">
+                <div id="button-box">
                 <div className="app-button" onClick={() => {
                     this.addrUpdate()
-                }}>Body</div>
+                    }}>Get Address</div>
+
+                    <div className="app-button">Deploy</div>
+                </div>
 
                 {this.state.addrVisible &&
                     <div id="return-election-address">
-                        <p>Your Election instance address is:</p>
+                        <p>Your Election instance caller address is:</p>
                         {this.state.addrVisible && this.state.addr}
                     </div>
                 }
