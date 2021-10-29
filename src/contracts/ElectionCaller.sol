@@ -9,8 +9,8 @@ contract ElectionCaller {
     address private owner;
 
     // Only charge to create election
-    modifier initPrice {
-        require(msg.value == 0, "Not enough Eth available to call vote.");
+    modifier initPrice(uint256 _amount) {
+        require(msg.value >= _amount, "Not enough Eth available to call vote.");
         _;
     }
 
@@ -19,7 +19,7 @@ contract ElectionCaller {
         owner = msg.sender;
     }
 
-    function createElection() public payable initPrice returns (address) {
+    function createElection() public payable initPrice(2 gwei) returns (address) {
         elecAddr = address(new Election(msg.sender));
         electionList.push(elecAddr);
 
