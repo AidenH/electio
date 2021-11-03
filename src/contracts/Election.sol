@@ -23,12 +23,6 @@ contract Election {
         _;
     }
 
-    modifier regPeriod {
-        require(block.timestamp < block.timestamp + registrationTime,
-            "Registration period has ended.");
-        _;
-    }
-
     // Adds caller to candidate list, marks election creation time
     constructor(address _callerAddr) {
         candidateList[_callerAddr] = 0;
@@ -36,8 +30,8 @@ contract Election {
     }
 
     // Add candidate to candidateList
-    function addCandidate(address _candidate) public regPeriod {
-        candidateList[_candidate] = 0;
+    function addCandidate() public regPeriod {
+        candidateList[msg.sender] = 0;
     }
 
     // Places vote if between registration end and voting end.
