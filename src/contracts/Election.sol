@@ -11,6 +11,12 @@ contract Election {
     uint256 registrationTime = 60;
     uint256 votingTime = 60;
 
+    modifier regPeriod {
+        require(block.timestamp < block.timestamp + registrationTime,
+            "Registration period has ended.");
+        _;
+    }
+
     modifier votingPeriod {
         require(block.timestamp > elecStart + registrationTime, 
             "Registration period still active.");
