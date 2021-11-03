@@ -6,13 +6,13 @@ const Election = artifacts.require("Election")
 contract("ElectionCaller", () => {
 
     // Deploy contract
-    it("Should deploy ElectionCaller contract", async() => {
+    it("should deploy ElectionCaller contract", async() => {
         const isDeployed = await ElectionCaller.isDeployed()
         assert.equal(isDeployed, true)
     })
 
     // createElection()
-    it("Should return address", async() => {
+    it("should return address", async() => {
         const inst = await ElectionCaller.deployed()
         
         await inst.createElection()
@@ -24,9 +24,19 @@ contract("ElectionCaller", () => {
 
 contract("Election", () => {
 
-    // Deployment contract
-    it("Should deploy Election contract", async() => {
+    // Deploy contract
+    it("should deploy Election contract", async() => {
         const isDeployed = await ElectionCaller.isDeployed()
         assert.equal(isDeployed, true)
+    })
+
+    // Test store candidate address
+    it("should store candidate address in candidateList", async() => {
+        const inst = await ElectionCaller.deployed()
+
+        await inst.addCandidate()
+        let r = await inst.candidateList.call(0)
+
+        assert.equal(r.substring(0,2), "0x")
     })
 })
