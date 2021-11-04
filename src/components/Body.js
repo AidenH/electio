@@ -5,7 +5,6 @@ import ElectionCallerAbi from '../../build/contracts/ElectionCaller.json'
 
 // Instantiate web3 and deployed ElectionCaller contract
 const web3 = new Web3('ws://127.0.0.1:8545')
-const ElectionCaller = new web3.eth.Contract(ElectionCallerAbi.abi, "0xa45fa685e8017302a963dfc7aacd63bc96c48df0")
 
 const contractAddr = web3.utils.toChecksumAddress(
     "0x9A84ae7f5022da413B363b7888CE0C8E10eFaF8b"
@@ -47,6 +46,8 @@ class Body extends Component {
                         {this.state.senderAddrVisible && this.state.senderAddr}
                     </div>
                 }
+
+                {/* Deployed address drop-down div will go here */}
             </div>
         )
     }
@@ -64,6 +65,8 @@ class Body extends Component {
     // Deploy Election instance
     async deployElectionInst() {
         const _callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
+        await ElectionCaller.methods.createElection().send({from: String(_callerAddr).toLowerCase(), gas: 580000})
+
         let electionInst = await ElectionCaller.methods.createElection().call()
         console.log(electionInst)
 
