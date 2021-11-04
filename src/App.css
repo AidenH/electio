@@ -93,4 +93,26 @@ html, body, #root {
 .menu-items {
     margin-right: 30px;
     float: left;
+    overflow-x: hidden;
+    cursor: pointer;
+}
+
+.menu-drop-down {
+    width: 90%;
+    position: absolute;
+    padding-left: 8px;
+    left: -10px;
+
+    border-left: 2px solid white;
+    font-size: small;
+    user-select: none;
+
+    transition: 0.5s;
+    margin-top: -2em;
+    opacity: 0;
+}
+
+.menu-drop-down.open {
+    margin-top: 1em;
+    opacity: 1;
 }
