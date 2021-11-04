@@ -45,7 +45,12 @@ class Body extends Component {
                     </div>
                 }
 
-                {/* Deployed address drop-down div will go here */}
+                {this.state.deployedAddrVisible &&
+                    <div id="return-election-address">
+                        <p>New election:</p>
+                        {this.state.deployedAddr}
+                    </div>
+                }
             </div>
         )
     }
