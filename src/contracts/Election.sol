@@ -6,6 +6,7 @@ contract Election {
     // Candidate list mapping with vote count
     mapping(address => uint256) private candidateList;
     
+    address owner;
     address[] voterList;
     uint256 elecStart;
     uint256 registrationTime = 60;
@@ -25,6 +26,7 @@ contract Election {
 
     // Adds caller to candidate list, marks election creation time
     constructor(address _callerAddr) {
+        owner = _callerAddr;
         candidateList[_callerAddr] = 0;
         elecStart = block.timestamp;
     }
