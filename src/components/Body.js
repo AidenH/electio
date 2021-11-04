@@ -53,7 +53,7 @@ class Body extends Component {
 
     // [Temp.] Get sender address
     async addrUpdate() {
-        const callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
+        const _callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
 
         this.setState({
             senderAddr: _callerAddr,
@@ -63,10 +63,12 @@ class Body extends Component {
 
     // Deploy Election instance
     async deployElectionInst() {
+        const _callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
         let electionInst = await ElectionCaller.methods.createElection().call()
         console.log(electionInst)
 
         this.setState({
+            deployedAddr: _callerAddr,
             deployedAddrVisible:true,
         })
     }
