@@ -62,14 +62,14 @@ class Body extends Component {
 
     // Deploy Election instance
     async deployElectionInst() {
-        const _callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
+        let _callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
         await ElectionCaller.methods.createElection().send({from: String(_callerAddr).toLowerCase(), gas: 580000})
 
-        let electionInst = await ElectionCaller.methods.createElection().call()
-        console.log(electionInst)
+        let _electionInst = await ElectionCaller.methods.createElection().call()
+        console.log(_electionInst)
 
         this.setState({
-            deployedAddr: _callerAddr,
+            deployedAddr: _electionInst,
             deployedAddrVisible:true,
         })
     }
