@@ -5,7 +5,7 @@ class Header extends Component {
     render() {
         return (
             <div id="app-header">
-                <h1>Electio</h1>
+                <h1>Electio 🗳️</h1>
                 
             </div>
         )
