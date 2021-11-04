@@ -24,6 +24,12 @@ contract Election {
         _;
     }
 
+    modifier ownerOnly {
+        require(msg.sender == owner, 
+            "Only the Election owner may perform this action.");
+        _;
+    }
+
     // Adds caller to candidate list, marks election creation time
     constructor(address _callerAddr) {
         owner = _callerAddr;
@@ -54,7 +60,7 @@ contract Election {
         }
     }
 
-    function tallyVote() public pure returns (bool) {
+    function tallyVote() public view ownerOnly returns (bool) {
         return true;
     }
 }
