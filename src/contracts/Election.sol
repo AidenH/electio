@@ -30,8 +30,10 @@ contract Election {
     }
 
     // Add candidate to candidateList
-    function addCandidate() public regPeriod {
+    function addCandidate() public regPeriod returns (bool) {
         candidateList[msg.sender] = 0;
+
+        return true;
     }
 
     // Places vote if between registration end and voting end.
@@ -50,7 +52,7 @@ contract Election {
         }
     }
 
-    function tallyVote() public {
-        // ...
+    function tallyVote() public pure returns (bool) {
+        return true;
     }
 }

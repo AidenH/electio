@@ -35,8 +35,8 @@ contract("Election", () => {
         const inst = await ElectionCaller.deployed()
 
         await inst.addCandidate()
-        let r = await inst.candidateList.call(0)
+        let r = await inst.addCandidate()
 
-        assert.equal(r.substring(0,2), "0x")
+        assert.equal(r, true)
     })
 })
