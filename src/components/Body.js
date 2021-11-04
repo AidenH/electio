@@ -16,7 +16,7 @@ class Body extends Component {
         super()
         this.state = {
             addr: "empty",
-            addrVisible: false
+            addrVisible: false,
         }
     }
 
