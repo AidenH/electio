@@ -21,8 +21,10 @@ class Body extends Component {
     constructor() {
         super()
         this.state = {
-            addr: "empty",
-            addrVisible: false,
+            senderAddr: "empty",
+            senderAddrVisible: false,
+            deployedAddr: "empty",
+            deployedAddrVisible: false,
         }
     }
 
@@ -39,10 +41,10 @@ class Body extends Component {
                     }}>Deploy</div>
                 </div>
 
-                {this.state.addrVisible &&
+                {this.state.senderAddrVisible &&
                     <div id="return-election-address">
-                        <p>Your Election instance caller address is:</p>
-                        {this.state.addrVisible && this.state.addr}
+                        <p>Your address is:</p>
+                        {this.state.senderAddrVisible && this.state.senderAddr}
                     </div>
                 }
             </div>
@@ -54,8 +56,8 @@ class Body extends Component {
         const callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
 
         this.setState({
-            addr: callerAddr,
-            addrVisible: true
+            senderAddr: _callerAddr,
+            senderAddrVisible: true,
         })
     }
 
@@ -63,6 +65,10 @@ class Body extends Component {
     async deployElectionInst() {
         let electionInst = await ElectionCaller.methods.createElection().call()
         console.log(electionInst)
+
+        this.setState({
+            deployedAddrVisible:true,
+        })
     }
 }
 
