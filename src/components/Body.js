@@ -7,6 +7,12 @@ import ElectionCallerAbi from '../../build/contracts/ElectionCaller.json'
 const web3 = new Web3('ws://127.0.0.1:8545')
 const ElectionCaller = new web3.eth.Contract(ElectionCallerAbi.abi, "0xa45fa685e8017302a963dfc7aacd63bc96c48df0")
 
+const contractAddr = web3.utils.toChecksumAddress(
+    "0x9A84ae7f5022da413B363b7888CE0C8E10eFaF8b"
+)
+const ElectionCaller = new web3.eth.Contract(ElectionCallerAbi.abi, contractAddr)
+
+// Check for MetaMask
 if (ethereum.isMetaMask === true) {
     console.log("MetaMask is present!")
 }
