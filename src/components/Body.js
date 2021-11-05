@@ -28,6 +28,7 @@ class Body extends Component {
     render() {
         return (
             <div id="app-body">
+                <h1>New vote:</h1>
                 <div id="button-box">
                     <div className="app-button" onClick={() => {
                         this.addrUpdate()
