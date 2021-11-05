@@ -68,6 +68,10 @@ html, body, #root {
     padding-top: 10px;
 }
 
+#gh-icon {
+    max-height: 35px;
+}
+
 .app-button {
     width: 100px;
     height: 50px;

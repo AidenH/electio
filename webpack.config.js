@@ -17,6 +17,10 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: ["style-loader", "css-loader"]
+			},
+			{
+				test: /\.(png|jpg|jpeg|gif)$/i,
+				type: 'asset',
 			}
 		],
 	},
@@ -51,5 +55,5 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			process: 'process/browser'
 		}),
-	],
+	]
 };

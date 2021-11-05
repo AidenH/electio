@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { AppContainer, hot } from "react-hot-loader"
 
+import ghIcon from './img/gh-icon-light.png'
+
 class Menu extends Component {
     constructor() {
         super()
@@ -25,7 +27,11 @@ class Menu extends Component {
                         ex ea commodo consequat.    
                         </div>
                     </div>
-                    <div className="menu-items">🗳️</div>
+                    <div className="menu-items">
+                        <a href="http://github.com/aidenh/electio">
+                            <img id="gh-icon" src={ghIcon}></img>
+                        </a>
+                    </div>
                 </h2>
             </div>
         )
