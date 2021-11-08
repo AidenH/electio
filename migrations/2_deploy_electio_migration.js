@@ -1,4 +1,4 @@
-// const Election = artifacts.require("Election")
+const Election = artifacts.require("Election")
 const ElectionCaller = artifacts.require("ElectionCaller")
 
 module.exports = (deployer) => {
