@@ -19,8 +19,8 @@ contract Election {
     }
 
     modifier votingPeriod {
-        require(block.timestamp > elecStart + registrationTime, 
-            "Registration period still active.");
+        // require(block.timestamp > elecStart + registrationTime, 
+        //     "Registration period still active.");
         _;
     }
 
