@@ -18,7 +18,7 @@ contract("ElectionCaller", () => {
         await inst.createElection()
         let varResult = await inst.createElection.call()
 
-        assert.equal(varResult.substring(0,2), "0x")
+        assert.equal(varResult.substring(0, 2), "0x")
     })
 })
 
@@ -26,8 +26,13 @@ contract("Election", () => {
 
     // Deploy contract
     it("should deploy Election contract", async() => {
-        const isDeployed = await ElectionCaller.isDeployed()
-        assert.equal(isDeployed, true)
+        const eCaller = await ElectionCaller.deployed()
+        const eAddr = await eCaller.createElection.call()
+        const eInst = await Election.new(eAddr)
+
+        let addr = await eInst.address
+        
+        assert.equal(addr.substring(0, 2), "0x")
     })
 
     // Test store candidate address
