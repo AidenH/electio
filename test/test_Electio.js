@@ -42,7 +42,7 @@ contract("Election", () => {
         const eInst = await Election.new(eAddr)
 
         console.log(await eInst.candidateList.call())
-
+        
         assert.equal(eInst, true)
     })
 })

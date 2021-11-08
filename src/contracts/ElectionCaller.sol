@@ -19,11 +19,12 @@ contract ElectionCaller {
         owner = msg.sender;
     }
 
-    function createElection() public payable initPrice(0 gwei) returns (address) {
-        elecAddr = address(new Election(msg.sender));
+    function createElection() public payable initPrice(0 gwei) returns (Election) {
+        Election e = new Election(msg.sender);
+        elecAddr = address(e);
         electionList.push(elecAddr);
 
-        return elecAddr;
+        return e;
     }
 
     // -For later use-
