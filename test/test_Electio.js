@@ -41,7 +41,11 @@ contract("Election", () => {
         const eAddr = await eCaller.createElection.call()
         const eInst = await Election.new(eAddr)
 
-        console.log(await eInst.candidateList.call())
+        let a = await eInst.addCandidate.call()
+        console.log(await eInst.placeVote(a))
+        console.log(await eInst.placeVote(a))
+
+        console.log(await eInst.candidateTally.call(a).words[0])
         
         assert.equal(eInst, true)
     })
