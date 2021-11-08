@@ -4,7 +4,7 @@ pragma solidity 0.8.9;
 contract Election {
     
     // Candidate list mapping with vote count
-    mapping(address => uint256) private candidateList;
+    mapping(address => uint256) public candidateList;
     
     address owner;
     address[] voterList;
@@ -63,4 +63,11 @@ contract Election {
     function tallyVote() public view ownerOnly returns (bool) {
         return true;
     }
+
+    // Return candidateList
+    // function viewCandidates() public view returns (address[]) {
+    //     address[] list;
+
+    //     return candidateList;
+    // }
 }
