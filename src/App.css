@@ -42,11 +42,11 @@ html, body, #root {
 
 #app-body {
     height: 10%;
-    width: 40%;
+    width: 50%;
 
     padding-block: 10px;
 	padding-left: 1%;
-    margin-left: 30%;
+    margin-left: 25%;
     margin-bottom: 20px;
 
 	border-radius: 5px;

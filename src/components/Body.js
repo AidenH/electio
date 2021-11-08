@@ -6,7 +6,7 @@ import ElectionCallerAbi from '../../build/contracts/ElectionCaller.json'
 // Init web3 and deployed ElectionCaller contract
 const web3 = new Web3('ws://127.0.0.1:8545')
 const contractAddr = web3.utils.toChecksumAddress(
-    "0x9A84ae7f5022da413B363b7888CE0C8E10eFaF8b")
+    "0xe1739e233AaebbDEe330D30adD18A6523bBB3eF7")
 const ElectionCaller = new web3.eth.Contract(ElectionCallerAbi.abi, contractAddr)
 
 // Check for MetaMask
@@ -69,7 +69,10 @@ class Body extends Component {
     // Deploy Election instance
     async deployElectionInst() {
         let _callerAddr = await ethereum.request({method: 'eth_requestAccounts'})
-        await ElectionCaller.methods.createElection().send({from: String(_callerAddr).toLowerCase(), gas: 580000})
+        await ElectionCaller.methods.createElection().send({
+            from: String(_callerAddr).toLowerCase(),
+            gas: 590000,
+        })
 
         let _electionInst = await ElectionCaller.methods.createElection().call()
         console.log(_electionInst)
