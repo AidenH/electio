@@ -37,11 +37,12 @@ contract("Election", () => {
 
     // Test store candidate address
     it("should store candidate address in candidateList", async() => {
-        const inst = await ElectionCaller.deployed()
+        const eCaller = await ElectionCaller.deployed()
+        const eAddr = await eCaller.createElection.call()
+        const eInst = await Election.new(eAddr)
 
-        await inst.addCandidate()
-        let r = await inst.addCandidate()
+        console.log(await eInst.candidateList.call())
 
-        assert.equal(r, true)
+        assert.equal(eInst, true)
     })
 })
