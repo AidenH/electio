@@ -31,6 +31,14 @@ contract Election {
         _;
     }
 
+    modifier price(uint _price) {
+        require(msg.value > _price, "Not enough Ether supplied");
+        _;
+        if (msg.value > _price) {
+            payable(msg.sender).transfer(msg.value - _price);
+        }
+    }
+
     // Adds caller to candidate list, marks election creation time
     constructor(address _callerAddr) {
         owner = _callerAddr;
@@ -39,7 +47,7 @@ contract Election {
     }
 
     // Add candidate to candidateList
-    function addCandidate() public regPeriod returns (address) {
+    function addCandidate() public payable regPeriod price(0.01999 ether) returns (address) {
         candidateTally[msg.sender] = 0;
         candidateList.push(msg.sender);
 
