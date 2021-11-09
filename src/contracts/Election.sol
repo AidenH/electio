@@ -13,12 +13,14 @@ contract Election {
     uint256 registrationTime = 60;
     uint256 votingTime = 60;
 
+    // Check that registration period is still active
     modifier regPeriod {
         require(block.timestamp < block.timestamp + registrationTime,
             "Registration period has ended.");
         _;
     }
 
+    // Check that voting period is still active
     modifier votingPeriod {
         // require(block.timestamp > elecStart + registrationTime, 
         //     "Registration period still active.");
@@ -31,6 +33,7 @@ contract Election {
         _;
     }
 
+    // Price modifier with change return
     modifier price(uint _price) {
         require(msg.value > _price, "Not enough Ether supplied");
         _;
