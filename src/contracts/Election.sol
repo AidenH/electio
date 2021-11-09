@@ -4,11 +4,11 @@ pragma solidity ^0.8.9;
 contract Election {
     
     // Candidate list mapping with vote count
-    mapping(address => uint256) public candidateTally;
+    mapping(address => uint256) private candidateTally;
     
     address owner;
-    address[] candidateList;
-    address[] voterList;
+    address[] public candidateList;
+    address[] private voterList;
     uint256 elecStart;
     uint256 registrationTime = 60;
     uint256 votingTime = 60;
