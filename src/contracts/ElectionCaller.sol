@@ -4,8 +4,8 @@ pragma solidity ^0.8.9;
 import "./Election.sol";
 
 contract ElectionCaller {
-    address[] public electionList;
-    address private owner;
+    address[] electionList;
+    address owner;
 
     // Only charge to create election
     modifier initPrice(uint256 _price) {
