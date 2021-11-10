@@ -9,9 +9,12 @@ contract ElectionCaller {
     address private owner;
 
     // Only charge to create election
-    modifier initPrice(uint256 _amount) {
-        require(msg.value >= _amount, "Not enough Eth available to call vote.");
+    modifier initPrice(uint256 _price) {
+        require(msg.value >= _price, "Not enough Ether supplied to create vote");
         _;
+        if (msg.value > _price) {
+            payable(msg.sender).transfer(msg.value - _price);
+        }
     }
 
     constructor() {
@@ -27,9 +30,8 @@ contract ElectionCaller {
         return e;
     }
 
-    // -For later use-
+    // For later use:
     // To call Election instance function:
-    // Election(elecAddr).placeVote(msg.sender, );
-    // Election(<address of>).function(<parameters>)
+    // Election(<address of Election instance>).function(<parameters>);
 
 }
