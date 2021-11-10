@@ -45,7 +45,8 @@ contract Election {
     // Adds caller to candidate list, marks election creation time
     constructor(address _callerAddr) {
         owner = _callerAddr;
-        candidateTally[_callerAddr] = 0;
+        candidateTally[_callerAddr];
+        candidateList.push(_callerAddr);
         elecStart = block.timestamp;
     }
 
