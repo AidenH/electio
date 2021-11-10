@@ -5,7 +5,6 @@ import "./Election.sol";
 
 contract ElectionCaller {
     address[] public electionList;
-    address public elecAddr;
     address private owner;
 
     // Only charge to create election
@@ -24,8 +23,7 @@ contract ElectionCaller {
 
     function createElection() public payable initPrice(0 gwei) returns (Election) {
         Election e = new Election(msg.sender);
-        elecAddr = address(e);
-        electionList.push(elecAddr);
+        electionList.push(address(e));
 
         return e;
     }
