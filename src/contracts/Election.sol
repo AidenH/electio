@@ -59,16 +59,16 @@ contract Election {
 
     // Places vote if between registration end and voting end.
     // Else, call tallyVote()
-    function placeVote(address _candidate) public votingPeriod returns (string memory) {
+    function placeVote(address _candidate) public votingPeriod returns (bool) {
         if (block.timestamp < (block.timestamp + registrationTime) + votingTime) {
             voterList.push(msg.sender);
             candidateTally[_candidate] += 1;
 
-            return "Vote placed!";
+            return true;
         }
         else {
             tallyVote();
-            return "Voting has ended.";
+            return false;
         }
     }
 
